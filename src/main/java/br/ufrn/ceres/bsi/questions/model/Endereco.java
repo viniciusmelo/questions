@@ -1,24 +1,28 @@
-package br.ufrn.ceres.bsi.questions.dao;
+package br.ufrn.ceres.bsi.questions.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
+/**
+ * 
+ * @author Emre Simtay <emre@simtay.com>
+ */
 @Entity
-public class Address extends BaseEntity implements Serializable {
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-
+public class Endereco extends BaseEntity implements Serializable {
+    
+    @Column(length = 50)
     private String street;
-
+    
+    @Column(length = 50)
     private String suburb;
+    
+    @Column(length = 50)
     private String city;
-
+    
+    @Column(length = 50)
     private String country;
 
-    public Address() {
+    public Endereco() {
     }
 
     public String getStreet() {
