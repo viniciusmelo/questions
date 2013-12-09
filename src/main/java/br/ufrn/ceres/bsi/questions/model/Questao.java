@@ -40,11 +40,11 @@ public class Questao extends BaseEntity implements Serializable {
     }
 
 
-    /*public void addAlternativa(String p) {
+    public void addAlternativa(String s) {
         Alternativa a = new Alternativa();
-        a.setDescricao(p);
+        a.setDescricao(s);
         alternativas.add(a);
-    }*/
+    }
 
 
 }

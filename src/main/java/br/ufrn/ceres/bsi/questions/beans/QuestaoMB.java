@@ -75,4 +75,14 @@ public class QuestaoMB{
         return mensagem;
     }
 
+    public void deletarQuestao(Questao q){
+        try{
+           setMensagem("Questao "+q.getPergunta()+" removido com sucesso!");
+           service.delete(q.getId());
+           }catch (Exception e) {
+               setMensagem("Erro ao excluir");
+               e.printStackTrace();
+           }
+    }
+
 }

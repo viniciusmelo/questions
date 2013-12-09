@@ -6,6 +6,7 @@ import javax.faces.bean.RequestScoped;
 import br.ufrn.ceres.bsi.questions.model.Questao;
 import br.ufrn.ceres.bsi.questions.model.Alternativa;
 import br.ufrn.ceres.bsi.questions.dao.AlternativaService;
+import br.ufrn.ceres.bsi.questions.dao.QuestaoService;
 import br.ufrn.ceres.bsi.questions.util.JPAUtil;
 
 @ManagedBean
@@ -15,16 +16,19 @@ public class AlternativaMB {
     private Alternativa alternativa = new Alternativa();
     private Questao questao = new Questao();
     private AlternativaService service;
+    private QuestaoService serviceQuestao;
     private String mensagem = "";
 
     public AlternativaMB(){
         service = new AlternativaService(JPAUtil.EMF);
+        serviceQuestao = new QuestaoService(JPAUtil.EMF);
     }
 
     public void inserir(){
         try{
+            questao = serviceQuestao.findQuestao(questao.getId());
             alternativa.setQuestao(questao);
-
+            questao.addAlternativa(alternativa.getDescricao());
             service.create(alternativa);
             setMensagem("Alternativa '"+alternativa.getDescricao()+"' criado com sucesso na questao '"+questao.getPergunta()+"'");
         }catch(Exception e){
@@ -63,5 +67,13 @@ public class AlternativaMB {
 
     public String getMensagem() {
         return mensagem;
+    }
+
+    public void setServiceQuestao(QuestaoService serviceQuestao) {
+        this.serviceQuestao = serviceQuestao;
+    }
+
+    public QuestaoService getServiceQuestao() {
+        return serviceQuestao;
     }
 }

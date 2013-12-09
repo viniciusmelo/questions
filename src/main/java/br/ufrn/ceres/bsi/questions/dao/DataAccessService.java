@@ -62,13 +62,13 @@ public abstract class DataAccessService<T> {
     }
 
 
-    public void delete(Object id) {
+    public void delete(Integer id) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             Object ref;
-            ref = em.getReference(this.type, id);
+            ref = em.getReference(Questao.class, id);
             em.remove(ref);
             em.getTransaction().commit();
         }
@@ -155,6 +155,16 @@ public abstract class DataAccessService<T> {
             em.close();
         }
     }
+
+    public Questao findQuestao(Integer id) {
+        EntityManager em = getEntityManager();
+        try {
+            return em.find(Questao.class, id);
+        } finally {
+            em.close();
+        }
+    }
+
 
 
 
