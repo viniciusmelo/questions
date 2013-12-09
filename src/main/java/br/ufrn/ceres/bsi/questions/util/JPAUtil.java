@@ -1,4 +1,4 @@
-package br.ufrn.ceres.bsi.questions.dao.util;
+package br.ufrn.ceres.bsi.questions.util;
 
 
 import javax.persistence.EntityManagerFactory;

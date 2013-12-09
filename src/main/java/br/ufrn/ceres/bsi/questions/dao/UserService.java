@@ -1,10 +1,12 @@
-package br.ufrn.ceres.bsi.questions.dao.util;
+package br.ufrn.ceres.bsi.questions.dao;
 
 import br.ufrn.ceres.bsi.questions.model.Usuario;
 
 
+
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
 
 /**
  *
@@ -15,8 +17,8 @@ import javax.persistence.EntityManager;
 public class UserService extends DataAccessService<Usuario>{
 
 
-    public UserService(){
-        super(Usuario.class);
+    public UserService(EntityManagerFactory emf){
+        super(Usuario.class, emf);
     }
 
 }
